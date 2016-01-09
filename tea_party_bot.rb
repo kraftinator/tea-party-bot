@@ -53,6 +53,9 @@ class TeaPartyBot
       result = ".#{result}"
     end
     
+    ## Unescape result
+    result = CGI.unescapeHTML( result )
+    
     if valid_tweet?(result)
       return true, result
     else
