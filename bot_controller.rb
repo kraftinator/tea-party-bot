@@ -33,6 +33,7 @@ class BotController
         puts "ERROR: #{result}"
       end
     end
+    true
   end
   
   def duplicate?( text )
