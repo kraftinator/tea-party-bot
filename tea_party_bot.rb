@@ -10,7 +10,6 @@ class TeaPartyBot
   
   def initialize( client )
     @texts = source_texts( client )
-    #@texts = source_texts_new(client)
     #@texts = source_texts_new_test
   end
   
@@ -31,6 +30,9 @@ class TeaPartyBot
     second_text = second_texts.shuffle.first
     result = "#{first_text.first_part} #{second_text.second_part}"
     
+    ## Return false if too many colons
+    return false, "TOO MANY COLONS: #{result}" if result.count(':') > 1
+    
     ## Edit result
     result.sub!('“', '"')
     result.sub!('”', '"')
@@ -44,6 +46,7 @@ class TeaPartyBot
     ## Remove extra period
     result.sub!("?.", "?")
     result.sub!("!.", "!")
+    result.sub!(":.", ":")
     result.sub!("..", ".")
     if result.split(//).last(2).join == ".." and result.split(//).last(3).join != "..."
       result = result.chomp(".")
@@ -94,6 +97,7 @@ class TeaPartyBot
       next if text[1] == '@'
       next if text =~ /\?/
       next if text =~ /\n/
+      next if text =~ /\=/
       words = text.split(' ')
       next if words.size < 5
       text = text.gsub(/https:\/\/[\w\.:\/]+/, '').squeeze(' ')
