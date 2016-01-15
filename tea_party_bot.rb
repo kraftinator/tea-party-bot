@@ -9,8 +9,8 @@ class TeaPartyBot
   attr_accessor :texts
   
   def initialize( client )
-    @texts = source_texts( client )
-    #@texts = source_texts_new_test
+    #@texts = source_texts( client )
+    @texts = source_texts_new_test
   end
   
   def tweet_length(text)
@@ -32,6 +32,15 @@ class TeaPartyBot
     
     ## Return false if too many colons
     return false, "TOO MANY COLONS: #{result}" if result.count(':') > 1
+    
+    ## Return false for certain word combos 
+    return false, "INVALID WORD COMBO" if result =~ /when is to/i
+    return false, "INVALID WORD COMBO" if result =~ /when here/i
+    return false, "INVALID WORD COMBO" if result =~ /when also/i
+    return false, "INVALID WORD COMBO" if result =~ /when would/i
+    return false, "INVALID WORD COMBO" if result =~ /which also to/i
+    return false, "INVALID WORD COMBO" if result =~ /their will/i
+    return false, "INVALID WORD COMBO" if result =~ /will for/i
     
     ## Edit result
     result.sub!('“', '"')
