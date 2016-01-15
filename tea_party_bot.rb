@@ -9,8 +9,8 @@ class TeaPartyBot
   attr_accessor :texts
   
   def initialize( client )
-    #@texts = source_texts( client )
-    @texts = source_texts_new_test
+    @texts = source_texts( client )
+    #@texts = source_texts_new_test
   end
   
   def tweet_length(text)
