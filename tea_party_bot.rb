@@ -56,22 +56,22 @@ class TeaPartyBot
     ################
     
     # Double quotation marks
-    result.sub!('“', '"')
-    result.sub!('”', '"')
+    result.gsub!('“', '"')
+    result.gsub!('”', '"')
     
     # Single quotaion marks
-    result.sub!(" '", " ")
-    result.sub!("' ", " ")
+    result.gsub!(" '", " ")
+    result.gsub!("' ", " ")
     
-    result.sub!(" ’", " ")
-    result.sub!("’ ", " ")
+    result.gsub!(" ’", " ")
+    result.gsub!("’ ", " ")
 
-    result.sub!(" ‘", " ")
-    result.sub!("‘ ", " ")
+    result.gsub!(" ‘", " ")
+    result.gsub!("‘ ", " ")
 
-    result.sub!("'.", ".")
-    result.sub!("’.", ".")
-    result.sub!("‘.", ".")
+    result.gsub!("'.", ".")
+    result.gsub!("’.", ".")
+    result.gsub!("‘.", ".")
     
     ## Validate parentheses
     left_parentheses = result.count("(")
@@ -81,14 +81,14 @@ class TeaPartyBot
     quote_count = result.count('"')
     if quote_count > 0 and quote_count.odd?
       ## Remove rogue quotes
-      result.sub!('"', '')
+      result.gsub!('"', '')
     end
     
     ## Remove extra period
-    result.sub!("?.", "?")
-    result.sub!("!.", "!")
-    result.sub!(":.", ":")
-    result.sub!("..", ".")
+    result.gsub!("?.", "?")
+    result.gsub!("!.", "!")
+    result.gsub!(":.", ":")
+    result.gsub!("..", ".")
     if result.split(//).last(2).join == ".." and result.split(//).last(3).join != "..."
       result = result.chomp(".")
     end
