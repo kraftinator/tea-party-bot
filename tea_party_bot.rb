@@ -49,6 +49,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when would/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /which also to/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /while is/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /while of/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will for/i
     
     ################
