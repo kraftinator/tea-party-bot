@@ -36,6 +36,13 @@ class BotController
     true
   end
   
+  def duplicate?( result )
+    search_str = "from:#{@user_screen_name} #{result}"
+    results = @client.search( search_str )
+    results.any? ? true : false
+  end
+  
+=begin  
   def duplicate?( text )
     tweets = @client.user_timeline
     tweets.each do |tweet|
@@ -43,6 +50,7 @@ class BotController
     end
     false
   end
+=end  
   
   def list
     bot = @bots.first
