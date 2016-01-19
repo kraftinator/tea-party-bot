@@ -77,7 +77,7 @@ class TeaPartyBot
     ## Validate parentheses
     left_parentheses = result.count("(")
     right_parentheses = result.count(")")
-    return false, "INVALID PARENTHESES: #{result}" if left_parentheses != right_parentheses = result.count(")")
+    return false, "INVALID PARENTHESES: #{result}" if left_parentheses != right_parentheses
     
     quote_count = result.count('"')
     if quote_count > 0 and quote_count.odd?
