@@ -37,6 +37,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /because was/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /can have to/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /from teens pleads/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /it should it/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /might it/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /one who aren't/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /shall of/i
