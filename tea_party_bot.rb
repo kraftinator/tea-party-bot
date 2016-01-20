@@ -34,6 +34,7 @@ class TeaPartyBot
     return false, "TOO MANY COLONS: #{result}" if result.count(':') > 1
     
     ## Return false for certain word combos 
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /because for/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /because was/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /can have to/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /from teens pleads/i
@@ -52,6 +53,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /while is/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /while of/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will for/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /will it be/i
     
     ################
     ## Edit result
@@ -81,10 +83,10 @@ class TeaPartyBot
     return false, "INVALID PARENTHESES: #{result}" if left_parentheses != right_parentheses
     
     quote_count = result.count('"')
-    if quote_count > 0 and quote_count.odd?
+    return false, "INVALID QUOTES: #{result}" if quote_count > 0 and quote_count.odd?
       ## Remove rogue quotes
-      result.gsub!('"', '')
-    end
+      #result.gsub!('"', '')
+      #end
     
     ## Remove extra period
     result.gsub!("?.", "?")
