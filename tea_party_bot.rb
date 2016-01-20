@@ -42,6 +42,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /might it/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /one who aren't/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /shall of/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /should do that is/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /their will/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /we should it/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when is to/i
@@ -206,6 +207,7 @@ class TeaPartyBot
       ###############################
       category = 'alpha'
       next if parse_text( corpus, category, "to address" )
+      next if parse_text( corpus, category, "to advance" )
       next if parse_text( corpus, category, "to answer" )
       next if parse_text( corpus, category, "to assassinate" )
       next if parse_text( corpus, category, "to attack" )
