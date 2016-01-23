@@ -56,6 +56,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /while of/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will for/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will it be/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /will of/i
     
     ################
     ## Edit result
@@ -86,9 +87,6 @@ class TeaPartyBot
     
     quote_count = result.count('"')
     return false, "INVALID QUOTES: #{result}" if quote_count > 0 and quote_count.odd?
-      ## Remove rogue quotes
-      #result.gsub!('"', '')
-      #end
     
     ## Remove extra period
     result.gsub!("?.", "?")
@@ -101,6 +99,12 @@ class TeaPartyBot
 
     if result[0] == '@'
       result = ".#{result}"
+    end
+    
+    ## If result ends with colon, replace colon with period.
+    if result.last == ':'
+      result = result.chomp(":")
+      result = "#{result}."
     end
     
     ## Unescape result
