@@ -53,6 +53,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when is to/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when here/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when also/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /when did/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when of/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when was/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /when would/i
@@ -62,6 +63,7 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will for/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will it be/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will of/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /would as/i
     
     ################
     ## Edit result
@@ -140,12 +142,16 @@ class TeaPartyBot
     tweets << client.search("from:creepingsharia -rt", result_type: "recent").take(100)
     tweets << client.search("from:FiveRights -rt", result_type: "recent").take(100)
     tweets << client.search("from:AllenWest -rt", result_type: "recent").take(100)
-    tweets << client.search("from:jrsalzman -rt", result_type: "recent").take(100)
-    #tweets << client.search("from:JohnFromCranber -rt", result_type: "recent").take(100)
+    tweets << client.search("from:WayneRoot -rt", result_type: "recent").take(100) # 9
+    tweets << client.search("from:DanScavino -rt", result_type: "recent").take(100) # 13
     tweets << client.search("from:AndreaTantaros -rt", result_type: "recent").take(100)
     tweets << client.search("from:SheriffClarke -rt", result_type: "recent").take(100)
     tweets << client.search("from:BreitbartNews -rt", result_type: "recent").take(100)
     tweets << client.search("from:LibertySeeds -rt", result_type: "recent").take(100)
+    
+    #tweets << client.search("from:jrsalzman -rt", result_type: "recent").take(100) # Inactive
+    #tweets << client.search("from:JohnFromCranber -rt", result_type: "recent").take(100) # 13
+    
     tweets.flatten!
 
     ## Build corpus
@@ -163,6 +169,7 @@ class TeaPartyBot
       corpus_list << "#{text.strip}."
     end
     
+    corpus_list.uniq!
     build_source_texts( corpus_list ) 
  
     texts
@@ -236,6 +243,8 @@ class TeaPartyBot
       next if parse_text( corpus, category, "to build" )
       next if parse_text( corpus, category, "to buy" )
       next if parse_text( corpus, category, "to call" )
+      next if parse_text( corpus, category, "to carry" )
+      next if parse_text( corpus, category, "to clip" )
       next if parse_text( corpus, category, "to close" )
       next if parse_text( corpus, category, "to commemorate" )
       next if parse_text( corpus, category, "to control" )
@@ -261,7 +270,8 @@ class TeaPartyBot
       next if parse_text( corpus, category, "to endorse" )
       next if parse_text( corpus, category, "to ensure" )
       next if parse_text( corpus, category, "to exit" )
-      next if parse_text( corpus, category, "to expand" )   
+      next if parse_text( corpus, category, "to expand" )
+      next if parse_text( corpus, category, "to explain" )
       next if parse_text( corpus, category, "to fight" )
       next if parse_text( corpus, category, "to follow" )
       next if parse_text( corpus, category, "to fund" )
@@ -293,8 +303,11 @@ class TeaPartyBot
       next if parse_text( corpus, category, "to oppose" )
       next if parse_text( corpus, category, "to pander" )
       next if parse_text( corpus, category, "to pass" )
+      next if parse_text( corpus, category, "to pay" )
       next if parse_text( corpus, category, "to plow" )
       next if parse_text( corpus, category, "to prevent" )
+      next if parse_text( corpus, category, "to produce" )
+      next if parse_text( corpus, category, "to profit" )
       next if parse_text( corpus, category, "to promote" )
       next if parse_text( corpus, category, "to protect" )
       next if parse_text( corpus, category, "to pull" )
@@ -307,6 +320,7 @@ class TeaPartyBot
       next if parse_text( corpus, category, "to read" )
       next if parse_text( corpus, category, "to rebuild" )
       next if parse_text( corpus, category, "to receive" )
+      next if parse_text( corpus, category, "to recruit" )
       next if parse_text( corpus, category, "to reduce" )
       next if parse_text( corpus, category, "to refuse" )
       next if parse_text( corpus, category, "to return" )
@@ -319,14 +333,17 @@ class TeaPartyBot
       next if parse_text( corpus, category, "to stay" )
       next if parse_text( corpus, category, "to stop" )
       next if parse_text( corpus, category, "to support" )
+      next if parse_text( corpus, category, "to survive" )
       next if parse_text( corpus, category, "to scrap" )
       next if parse_text( corpus, category, "to understand" )
       next if parse_text( corpus, category, "to take" )
       next if parse_text( corpus, category, "to target" )
       next if parse_text( corpus, category, "to terminate" )
       next if parse_text( corpus, category, "to think" )
+      next if parse_text( corpus, category, "to train" )
       next if parse_text( corpus, category, "to tweet" )
       next if parse_text( corpus, category, "to use" )
+      next if parse_text( corpus, category, "to visit" )
       next if parse_text( corpus, category, "to watch" )
       next if parse_text( corpus, category, "to wear" )
       next if parse_text( corpus, category, "to win" )
