@@ -137,18 +137,19 @@ class TeaPartyBot
     @texts = []
     
     tweets = []
-    tweets << client.search("from:fedupwithpccrap -rt", result_type: "recent").take(100)
-    tweets << client.search("from:mitchellvii -rt", result_type: "recent").take(100)
-    tweets << client.search("from:creepingsharia -rt", result_type: "recent").take(100)
-    tweets << client.search("from:FiveRights -rt", result_type: "recent").take(100)
-    tweets << client.search("from:AllenWest -rt", result_type: "recent").take(100)
-    tweets << client.search("from:WayneRoot -rt", result_type: "recent").take(100) # 9
-    tweets << client.search("from:DanScavino -rt", result_type: "recent").take(100) # 13
-    tweets << client.search("from:AndreaTantaros -rt", result_type: "recent").take(100)
-    tweets << client.search("from:SheriffClarke -rt", result_type: "recent").take(100)
-    tweets << client.search("from:BreitbartNews -rt", result_type: "recent").take(100)
-    tweets << client.search("from:LibertySeeds -rt", result_type: "recent").take(100)
+    tweets << client.search("from:mitchellvii -rt", result_type: "recent").take(100) # 23
+    tweets << client.search("from:LibertySeeds -rt", result_type: "recent").take(100) # 18
+    tweets << client.search("from:redstate -rt", result_type: "recent").take(100) # 18
+    tweets << client.search("from:creepingsharia -rt", result_type: "recent").take(100) # 12
+    tweets << client.search("from:FiveRights -rt", result_type: "recent").take(100) # 10
+    tweets << client.search("from:Infowars_Sniper -rt", result_type: "recent").take(100) # 9
+    tweets << client.search("from:FredZeppelin12 -rt", result_type: "recent").take(100) # 8
+    tweets << client.search("from:WayneRoot -rt", result_type: "recent").take(100) # 7
+    tweets << client.search("from:SheriffClarke -rt", result_type: "recent").take(100) # 7
+    tweets << client.search("from:BreitbartNews -rt", result_type: "recent").take(100) # 6
     
+    #tweets << client.search("from:AllenWest -rt", result_type: "recent").take(100) # 3
+    #tweets << client.search("from:AndreaTantaros -rt", result_type: "recent").take(100) # protected account    
     #tweets << client.search("from:jrsalzman -rt", result_type: "recent").take(100) # Inactive
     #tweets << client.search("from:JohnFromCranber -rt", result_type: "recent").take(100) # 13
     

@@ -1,3 +1,4 @@
+=begin
 require 'rubygems'
 require_relative 'bot_controller'
 
@@ -14,3 +15,4 @@ while( bot_controller.tweet )
     sleep(900)
   end
 end
+=end
