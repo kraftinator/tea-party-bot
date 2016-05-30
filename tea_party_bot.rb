@@ -137,6 +137,7 @@ class TeaPartyBot
     @texts = []
     
     tweets = []
+    tweets << client.search("from:slone -rt", result_type: "recent").take(100) # 28
     tweets << client.search("from:mitchellvii -rt", result_type: "recent").take(100) # 23
     tweets << client.search("from:LibertySeeds -rt", result_type: "recent").take(100) # 18
     tweets << client.search("from:redstate -rt", result_type: "recent").take(100) # 18
