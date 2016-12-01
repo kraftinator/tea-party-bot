@@ -33,6 +33,9 @@ class TeaPartyBot
     ## Return false if too many colons
     return false, "TOO MANY COLONS: #{result}" if result.count(':') > 1
     
+    ## Return false if too many mentions
+    return false, "TOO MANY MENTIONS: #{result}" if result.count('@') > 2
+    
     ## Return false for certain word combos 
     return false, "INVALID WORD COMBO: #{result}" if result =~ /because for/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /because is/i
@@ -64,6 +67,15 @@ class TeaPartyBot
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will it be/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /will of/i
     return false, "INVALID WORD COMBO: #{result}" if result =~ /would as/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /being on with/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /fuck/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /retard/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /shit/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /butt-hurt/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /butthurt/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ /butt hurt/i
+    return false, "INVALID WORD COMBO: #{result}" if result =~ / via @/i
+    
     
     ################
     ## Edit result
@@ -95,11 +107,16 @@ class TeaPartyBot
     quote_count = result.count('"')
     return false, "INVALID QUOTES: #{result}" if quote_count > 0 and quote_count.odd?
     
+    return false, "INVALID CHARACTERS: #{result}" if result =~ /…/
+    
     ## Remove extra period
     result.gsub!("?.", "?")
     result.gsub!("!.", "!")
     result.gsub!(":.", ":")
+    result.gsub!(";.", ".")
+    result.gsub!("-.", ".")
     result.gsub!("..", ".")
+    result.gsub!(",.", ".")
     result.gsub!(".\".", ".\"")
     if result.split(//).last(2).join == ".." and result.split(//).last(3).join != "..."
       result = result.chomp(".")
