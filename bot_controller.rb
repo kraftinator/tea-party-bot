@@ -42,16 +42,6 @@ class BotController
     results.any? ? true : false
   end
   
-=begin  
-  def duplicate?( text )
-    tweets = @client.user_timeline
-    tweets.each do |tweet|
-      return true if tweet.text == text
-    end
-    false
-  end
-=end  
-  
   def list
     bot = @bots.first
     success, result = bot.build_text
