@@ -166,7 +166,8 @@ class TeaPartyBot
     tweets << client.search("from:LibertySeeds -rt", result_type: "recent").take(100) # 18
     tweets << client.search("from:redstate -rt", result_type: "recent").take(100) # 18
     tweets << client.search("from:jason_howerton -rt", result_type: "recent").take(100) # 13
-    tweets << client.search("from:creepingsharia -rt", result_type: "recent").take(100) # 12
+    #tweets << client.search("from:creepingsharia -rt", result_type: "recent").take(100) # 12
+    tweets << client.search("from:jrsalzman -rt", result_type: "recent").take(100) # Inactive
     tweets << client.search("from:FiveRights -rt", result_type: "recent").take(100) # 10
     tweets << client.search("from:Infowars_Sniper -rt", result_type: "recent").take(100) # 9
     tweets << client.search("from:FredZeppelin12 -rt", result_type: "recent").take(100) # 8
